@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'navbar-primary-nav',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrimaryNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private session: SessionService) { }
 
   ngOnInit() {
+  }
+
+  onLogout() {
+    this.session.stopSession();
+    document.location.href = '/login';
   }
 
 }
